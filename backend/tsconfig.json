@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es6", // El código JavaScript compilado será en ES6
+    "module": "commonjs", // Usar módulos comunes (para Node.js)
+    "rootDir": "./src", // Carpeta fuente de los archivos TypeScript
+    "outDir": "./dist", // Carpeta donde se generarán los archivos JavaScript
+    "esModuleInterop": true, // Permitir la importación de módulos CommonJS
+    "strict": true, // Habilitar reglas estrictas de TypeScript
+    "skipLibCheck": true // Saltar la comprobación de tipos de las bibliotecas
+  },
+  "include": ["src/**/*.ts"], // Incluir solo archivos .ts de la carpeta src
+  "exclude": ["node_modules"] // Excluir node_modules
+}
