@@ -16,11 +16,11 @@ router.get('/citas', async (req, res) => {
 
 // Agregar una nueva cita
 router.post('/citas', async (req, res) => {
-  const { fecha, paciente_id, doctor_id, motivo, estado } = req.body;
+  const { fecha, nombre_paciente, nombre_doctor, motivo, estado } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO citas (fecha, paciente_id, doctor_id, motivo, estado) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [fecha, paciente_id, doctor_id, motivo, estado]
+      'INSERT INTO citas (fecha, nombre_paciente, nombre_doctor, motivo, estado) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [fecha, nombre_paciente, nombre_doctor, motivo, estado]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {

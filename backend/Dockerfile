@@ -23,4 +23,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Comando para iniciar la aplicación con hot reload
-CMD ["nodemon", "--watch", "src", "--exec", "ts-node", "src/server.ts"]
+CMD ["nodemon", "--watch", "src", "--exec", "ts-node", "src/server.ts", "npm", "run", "dev"]
