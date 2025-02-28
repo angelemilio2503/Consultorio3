@@ -1,6 +1,8 @@
 # Dependencias de Node.js
 node_modules/
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
 # Archivos de entorno y configuración sensibles
 .env
@@ -9,7 +11,7 @@ package-lock.json
 .env.production
 .env.test
 
-# Build output (archivos generados en la compilación)
+# Archivos de compilación
 dist/
 out/
 build/
@@ -21,11 +23,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencias de Node.js
-node_modules/
-
-# Archivos de compilación
-dist/
-
-# Variables de entorno
-.env
+# IDE y sistema operativo
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
