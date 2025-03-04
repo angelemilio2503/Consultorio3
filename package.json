@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "vite": "^6.2.0"
   },
   "dependencies": {
     "crypto-js": "^4.2.0"
