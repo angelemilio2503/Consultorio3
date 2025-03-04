@@ -28,3 +28,25 @@ lerna-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Ignorar dependencias
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de compilación
+dist/
+build/
+out/
+
+# Variables de entorno
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+
+# Directorios de Vite y React
+.vite/
+.next/
+.cache/
