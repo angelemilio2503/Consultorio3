@@ -65,3 +65,10 @@ app.listen(PORT, () => {
     console.error("❌ Error al iniciar el servidor:", err);
     process.exit(1);
 });
+// Configurar CORS para permitir varios orígenes
+const corsOptions = {
+    origin: ['http://localhost:5173', 'http://localhost:5174'], // Permitir ambos orígenes
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true, // Permitir cookies si es necesario
+};
+app.use((0, cors_1.default)(corsOptions));

@@ -8,9 +8,9 @@ const pg_1 = require("pg");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 exports.pool = new pg_1.Pool({
-    user: "postgres",
-    host: "localhost",
-    password: "1234",
-    database: "consultorio",
-    port: 5432,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST, // Aquí debe ser 'db', no 'localhost'
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: Number(process.env.DB_PORT),
 });

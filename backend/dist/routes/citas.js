@@ -28,9 +28,9 @@ router.get('/citas', (req, res) => __awaiter(void 0, void 0, void 0, function* (
 }));
 // Agregar una nueva cita
 router.post('/citas', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { fecha, paciente_id, doctor_id, motivo, estado } = req.body;
+    const { fecha, nombre_paciente, nombre_doctor, motivo, estado } = req.body;
     try {
-        const result = yield database_1.pool.query('INSERT INTO citas (fecha, paciente_id, doctor_id, motivo, estado) VALUES ($1, $2, $3, $4, $5) RETURNING *', [fecha, paciente_id, doctor_id, motivo, estado]);
+        const result = yield database_1.pool.query('INSERT INTO citas (fecha, nombre_paciente, nombre_doctor, motivo, estado) VALUES ($1, $2, $3, $4, $5) RETURNING *', [fecha, nombre_paciente, nombre_doctor, motivo, estado]);
         res.status(201).json(result.rows[0]);
     }
     catch (error) {
