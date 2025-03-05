@@ -50,3 +50,4 @@ out/
 .vite/
 .next/
 .cache/
+.vercel
