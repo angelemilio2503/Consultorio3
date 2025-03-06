@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -19,7 +10,7 @@ const database_1 = require("../database");
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const router = (0, express_1.Router)();
 // ✅ Ruta de inicio de sesión unificada para Admins y Doctores
-router.post("/login", (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/login", (0, express_async_handler_1.default)(async (req, res) => {
     const { usuario, contrasena, rol } = req.body;
     if (!usuario || !contrasena || !rol) {
         res.status(400).json({ mensaje: "Usuario, contraseña y rol son obligatorios." });
@@ -30,10 +21,10 @@ router.post("/login", (0, express_async_handler_1.default)((req, res) => __await
         let userType = rol;
         // 🔍 Buscar en la tabla correspondiente según el rol
         if (rol === "Admin") {
-            result = yield database_1.pool.query("SELECT * FROM users WHERE usuario = $1", [usuario]);
+            result = await database_1.pool.query("SELECT * FROM users WHERE usuario = $1", [usuario]);
         }
         else if (rol === "Doctor") {
-            result = yield database_1.pool.query("SELECT * FROM doctores WHERE usuario = $1", [usuario]);
+            result = await database_1.pool.query("SELECT * FROM doctores WHERE usuario = $1", [usuario]);
         }
         else {
             res.status(400).json({ mensaje: "Rol inválido" });
@@ -45,7 +36,7 @@ router.post("/login", (0, express_async_handler_1.default)((req, res) => __await
         }
         const user = result.rows[0];
         // 🔐 Verificar la contraseña
-        const validPassword = yield bcryptjs_1.default.compare(contrasena, user.contrasena);
+        const validPassword = await bcryptjs_1.default.compare(contrasena, user.contrasena);
         if (!validPassword) {
             res.status(401).json({ mensaje: "Usuario o contraseña incorrecta" });
             return;
@@ -66,5 +57,5 @@ router.post("/login", (0, express_async_handler_1.default)((req, res) => __await
         console.error("Error durante el inicio de sesión:", error);
         res.status(500).json({ mensaje: "Error interno del servidor" });
     }
-})));
+}));
 exports.default = router;

@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -39,18 +30,18 @@ const decrypt = (text) => {
     return decrypted.toString();
 };
 // 🔒 Login y generación de JWT con tipos correctos
-const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const loginUser = async (req, res) => {
     try {
         const { usuario, contrasena, rol } = req.body;
         // Buscar usuario en la base de datos
-        const result = yield database_1.pool.query("SELECT * FROM users WHERE usuario = $1 AND rol = $2", [usuario, rol]);
+        const result = await database_1.pool.query("SELECT * FROM users WHERE usuario = $1 AND rol = $2", [usuario, rol]);
         if (result.rows.length === 0) {
             res.status(401).json({ message: "Usuario o contraseña incorrecta" });
             return;
         }
         const user = result.rows[0];
         // Verificar contraseña
-        const validPassword = yield bcryptjs_1.default.compare(contrasena, user.contrasena);
+        const validPassword = await bcryptjs_1.default.compare(contrasena, user.contrasena);
         if (!validPassword) {
             res.status(401).json({ message: "Usuario o contraseña incorrecta" });
             return;
@@ -71,5 +62,5 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         console.error("Error en login:", error);
         res.status(500).json({ message: "Error interno del servidor" });
     }
-});
+};
 exports.loginUser = loginUser;

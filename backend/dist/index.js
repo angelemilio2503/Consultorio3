@@ -2,7 +2,6 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
@@ -21,7 +20,7 @@ if (!process.env.JWT_SECRET || !process.env.ENCRYPTION_SECRET) {
     process.exit(1);
 }
 console.log("✅ JWT_SECRET loaded:", process.env.JWT_SECRET ? "✔️ Loaded" : "❌ Not Loaded");
-console.log("✅ ENCRYPTION_SECRET length:", ((_a = process.env.ENCRYPTION_SECRET) === null || _a === void 0 ? void 0 : _a.length) || "❌ Not Loaded");
+console.log("✅ ENCRYPTION_SECRET length:", process.env.ENCRYPTION_SECRET?.length || "❌ Not Loaded");
 const PORT = process.env.PORT || 3000;
 const app = (0, express_1.default)();
 // 🔒 Configuración de seguridad con Helmet
