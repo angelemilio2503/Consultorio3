@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "npm run build && nodemon dist/index.js",
+    "start": "npm run build && nodemon dist/index.js",
     "build": "tsc",
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/server.ts"
   },
@@ -22,7 +22,7 @@
     "concurrently": "^9.1.2",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.16",
