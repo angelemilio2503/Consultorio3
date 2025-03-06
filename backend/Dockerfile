@@ -25,5 +25,7 @@ RUN npm run build
 # Exponer el puerto 3000
 EXPOSE 3000
 
+RUN ls -l src/
+
 # Comando para iniciar la aplicación con hot reload
 CMD ["npm", "run", "dev"]
