@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && nodemon dist/index.js",
-    "build": "tsc --verbose",
+    "build": "tsc --pretty --verbose",
+    "start": "node dist/server.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/server.ts"
   },
   "engines": {
