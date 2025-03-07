@@ -7,6 +7,9 @@
     "build": "tsc",
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/server.ts"
   },
+  "engines": {
+  "node": "18.x"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
