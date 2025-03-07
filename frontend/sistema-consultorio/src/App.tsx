@@ -17,6 +17,7 @@ function App() {
       {/* Proporciona animaciones al cambiar de página */}
       <AnimatePresence mode="wait">
         <Routes>
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/pacientes" element={<Pacientes />} />

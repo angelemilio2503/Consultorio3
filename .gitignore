@@ -51,3 +51,13 @@ out/
 .next/
 .cache/
 .vercel
+
+# Ignorar archivos y directorios de Docker
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+.dockerignore
+.env.docker
+docker/
+.docker/
+docker-compose.*
