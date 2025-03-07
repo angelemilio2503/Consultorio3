@@ -61,3 +61,4 @@ docker-compose.override.yml
 docker/
 .docker/
 docker-compose.*
+DOCKER_GUIDE.md
