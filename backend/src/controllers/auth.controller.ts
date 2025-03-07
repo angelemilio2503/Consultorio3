@@ -3,17 +3,17 @@ import { pool } from "../database";
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-import crypto from "crypto";
+import * as crypto from "crypto"; // ✅ Corregido
 
 dotenv.config();
 
 const algorithm = "aes-256-cbc";
-const secretKey = process.env.ENCRYPTION_SECRET as string;
-const iv = crypto.randomBytes(16);
+const secretKey: string = process.env.ENCRYPTION_SECRET as string; // ✅ Se asegura de que sea un string
+const iv: Buffer = crypto.randomBytes(16);
 
 // 🔐 Funciones de encriptación y desencriptación
 const encrypt = (text: string): string => {
-  const cipher = crypto.createCipheriv(algorithm, Buffer.from(secretKey), iv);
+  const cipher = crypto.createCipheriv(algorithm, Buffer.from(secretKey, "utf-8"), iv);
   let encrypted = cipher.update(text);
   encrypted = Buffer.concat([encrypted, cipher.final()]);
   return iv.toString("hex") + ":" + encrypted.toString("hex");
@@ -23,7 +23,7 @@ const decrypt = (text: string): string => {
   const textParts = text.split(":");
   const iv = Buffer.from(textParts[0], "hex");
   const encryptedText = Buffer.from(textParts[1], "hex");
-  const decipher = crypto.createDecipheriv(algorithm, Buffer.from(secretKey), iv);
+  const decipher = crypto.createDecipheriv(algorithm, Buffer.from(secretKey, "utf-8"), iv);
   let decrypted = decipher.update(encryptedText);
   decrypted = Buffer.concat([decrypted, decipher.final()]);
   return decrypted.toString();
