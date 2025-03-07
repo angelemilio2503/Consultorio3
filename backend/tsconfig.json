@@ -11,7 +11,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"],
-    "lib": ["esnext", "dom"]
+    "lib": ["ESNext", "dom"],
+    "types": ["node", "dotenv"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

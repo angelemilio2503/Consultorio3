@@ -1,5 +1,5 @@
 import express, { Application, Request, Response, NextFunction } from "express";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 import cors from "cors";
 import { pool } from "./database";
 import doctorRoutes from "./routes/doctores.routes";
