@@ -49,9 +49,9 @@ exports.loginUser = void 0;
 const database_1 = require("../database");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const crypto = __importStar(require("crypto")); // ✅ Corregido
-dotenv_1.default.config();
+const dotenv = __importStar(require("dotenv"));
+const crypto = __importStar(require("crypto")); // ✅ Corrección para crypto en TypeScript
+dotenv.config();
 const algorithm = "aes-256-cbc";
 const secretKey = process.env.ENCRYPTION_SECRET; // ✅ Se asegura de que sea un string
 const iv = crypto.randomBytes(16);

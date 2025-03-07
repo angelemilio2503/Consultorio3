@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import { pool } from "../database";
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import dotenv from "dotenv";
-import * as crypto from "crypto"; // ✅ Corregido
+import * as dotenv from "dotenv";
+import * as crypto from "crypto"; // ✅ Corrección para crypto en TypeScript
 
 dotenv.config();
 
