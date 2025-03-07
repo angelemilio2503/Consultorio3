@@ -10,7 +10,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types"] 
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["esnext", "dom"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
