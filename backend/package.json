@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && nodemon dist/index.js",
-    "build": "tsc",
+    "build": "tsc --verbose",
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/server.ts"
   },
   "engines": {
